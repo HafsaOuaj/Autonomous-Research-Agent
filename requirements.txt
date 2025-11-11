@@ -11,3 +11,5 @@ numpy
 python-dotenv
 streamlit
 tqdm
+ddgs
+sentence-transformers
