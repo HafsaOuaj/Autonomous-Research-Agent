@@ -6,7 +6,7 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_core.documents import Document
 from tqdm import tqdm
 
-CHROMA_PATH ="../vector_store"
+CHROMA_PATH ="./vector_store"
 
 class ResearchRetrieverAgent:
     def __init__(self,topic:str,n_results:int=5):
