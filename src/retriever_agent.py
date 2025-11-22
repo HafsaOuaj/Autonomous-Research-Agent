@@ -1,5 +1,5 @@
 import os
-from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_community.tools import DuckDuckGoSearchResults
 from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -12,7 +12,8 @@ class ResearchRetrieverAgent:
     def __init__(self,topic:str,n_results:int=5):
         self.topic = topic
         self.n_results =n_results 
-        self.search_tool = DuckDuckGoSearchRun()
+        self.search_tool = DuckDuckGoSearchResults(n_results=self.n_results)
+
         self.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
         self.db = None
 
