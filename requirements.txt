@@ -13,3 +13,4 @@ streamlit
 tqdm
 ddgs
 sentence-transformers
+streamlit
