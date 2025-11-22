@@ -1,0 +1,16 @@
+langchain
+langchain-core
+langchain-community
+openai
+chromadb
+tavily-python
+faiss-cpu
+requests
+pandas
+numpy
+python-dotenv
+streamlit
+tqdm
+ddgs
+sentence-transformers
+streamlit

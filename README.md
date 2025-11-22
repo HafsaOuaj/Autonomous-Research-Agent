@@ -70,7 +70,13 @@ Final Structured Report (Markdown / JSON)
 
 1️⃣ **Query Understanding** – Interpret user intent and define research scope.  
 2️⃣ **Document Retrieval** – Use hybrid search (web + embeddings) to collect relevant materials.  
-3️⃣ **Knowledge Extraction** – Parse and extract methods, results, datasets, and limitations.  
+3️⃣ **Knowledge Extraction** – Parse and extract methods, results, datasets, and limitations.
+In this part we need to run: 
+`
+curl -fsSL https://ollama.com/install.sh | sh
+ollama serve
+
+`
 4️⃣ **Synthesis & Validation** – Aggregate information and perform self-consistency checks.  
 5️⃣ **Output Generation** – Deliver structured Markdown or JSON summaries with citations.  
 
