@@ -8,45 +8,54 @@ from langchain_community.llms import Ollama
 CHROMA_PATH = "./vector_store"
 
 class DocumentAnalyzerAgent:
-    def __init__(self,model_name:str="mistral"):
-        self.embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-        self.db = Chroma(persist_directory=CHROMA_PATH, embedding_function=self.embeddings)
-        self.llm = Ollama(model=model_name)
+    def __init__(self, model_name: str = "phi"):
+        self.embeddings = HuggingFaceEmbeddings(
+            model_name="sentence-transformers/all-MiniLM-L6-v2"
+        )
+        self.db = Chroma(
+            persist_directory=CHROMA_PATH,
+            embedding_function=self.embeddings
+        )
+        self.llm = Ollama(
+            model=model_name,
+            base_url="http://host.docker.internal:11434"
+        )
 
-    def fetch_relevent_docs(self,query:str,top_k:int=3):
+    def fetch_relevant_docs(self, query: str, top_k: int = 3):
         print(f"📚 Retrieving top {top_k} documents for: {query}")
         results = self.db.similarity_search(query, k=top_k)
         return results
     
-    def analyze_documents(self,docs):
+    def analyze_documents(self, docs):
         print("🧠 Analyzing retrieved documents...")
+
         combined_text = "\n\n".join([doc.page_content for doc in docs])
 
-        prompt = f""""
-        You are an Ai assistant.
-        Analyze the following text and extract structured research information.
+        prompt = f"""
+You are an AI assistant.
+Analyze the following text and extract structured research information.
 
-        Text:
-        {combined_text}
+Text:
+{combined_text}
 
-        Return the answer as a JSON with these fields
+Return the answer strictly as a valid JSON with the following format:
 
-                {{
-            "main_topic": "",
-            "key_points": [],
-            "methods": [],
-            "findings": [],
-            "limitations": []
-        }}
-
-        """
+{{
+  "main_topic": "",
+  "key_points": [],
+  "methods": [],
+  "findings": [],
+  "limitations": []
+}}
+"""
 
         response = self.llm.invoke(prompt)
 
+        # Ollama returns a raw string → must parse with json.loads()
         try:
-            data = json.load(response)
-        except:
-            data = {"raw summary":response}
+            data = json.loads(response)
+        except Exception:
+            data = {"raw_summary": response}
 
         return data
     
@@ -54,13 +63,8 @@ class DocumentAnalyzerAgent:
 if __name__ == "__main__":
     query = input("Enter the topic to analyze: ")
     agent = DocumentAnalyzerAgent()
-    docs = agent.fetch_relevent_docs(query)
+    docs = agent.fetch_relevant_docs(query)
     summary = agent.analyze_documents(docs)
+
     print("\n📊 Structured Analysis:\n")
     print(json.dumps(summary, indent=2, ensure_ascii=False))
-
-
-        
-
-        
-
