@@ -105,20 +105,6 @@ ollama serve
 
 **Confidence:** 0.93  
 **Sources:** [ArXiv:2403.XXXX](#), [IEEE Xplore](#), [PapersWithCode](#)
-
-
----
-
-## 🧪 Fine-Tuning & Customization
-
-You can fine-tune smaller models for:
-
-* **Academic summarization** (PubMedQA, ArXiv Summaries)
-* **Evidence grounding** (Claim–Evidence datasets)
-* **Domain writing style** (scientific / technical tone)
-
-Training pipeline supports **LoRA / QLoRA with PEFT**, ensuring efficient fine-tuning even on modest GPUs.
-
 ---
 
 ## 📊 Evaluation
@@ -129,18 +115,6 @@ Training pipeline supports **LoRA / QLoRA with PEFT**, ensuring efficient fine-t
 | **Faithfulness** | Truthfulness vs. retrieved evidence | TruthfulQA |
 | **Coherence**    | Structural readability              | Rouge-L    |
 | **Latency**      | Query-to-report performance         | LangSmith  |
-
----
-
-## 🧱 Roadmap
-
-| Phase       | Focus                           | Status         |
-| ----------- | ------------------------------- | -------------- |
-| **Phase 1** | Base pipeline (retrieval + RAG) | 🟢 In progress |
-| **Phase 2** | Analyzer & Synthesizer agents   | ⏳ Planned      |
-| **Phase 3** | Self-critique and fine-tuning   | ⏳ Planned      |
-| **Phase 4** | Streamlit dashboard + Docker    | ⏳ Planned      |
-| **Phase 5** | Evaluation & publication        | 🔜 Future      |
 
 ---
 
