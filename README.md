@@ -39,17 +39,6 @@ Final Structured Report (Markdown / JSON)
 
 ---
 
-## 🧠 Core Features
-
-✅ **Web & Local Retrieval** – Hybrid search using live web APIs and a persistent RAG database.  
-✅ **Autonomous Reasoning** – Multi-agent communication through LangGraph or CrewAI.  
-✅ **Fine-Tuning Ready** – LoRA / QLoRA for domain-adapted reasoning and summarization.  
-✅ **Cited & Traceable Output** – Generates summaries with verifiable sources and confidence scores.  
-✅ **Self-Critique Loop** – Iteratively checks for factual accuracy and completeness.  
-✅ **Extendable Tools** – APIs for datasets (PapersWithCode, CrossRef, Semantic Scholar, GitHub).  
-
----
-
 ## 🧰 Tech Stack
 
 | Layer | Technology | Description |
@@ -58,10 +47,8 @@ Final Structured Report (Markdown / JSON)
 | **Retrieval System** | LangChain + Chroma / Weaviate / FAISS | Vector database for semantic search |
 | **Search APIs** | Tavily / SerpAPI / DuckDuckGo | Real-time web data |
 | **Embeddings** | `text-embedding-3-large` / `bge-large-en-v1.5` | Document representation |
-| **Fine-Tuning** | LoRA / QLoRA + PEFT | Lightweight domain adaptation |
-| **Evaluation** | RAGAS / TruthfulQA / Rouge-L | Quality & factual accuracy |
 | **Orchestration** | LangGraph / CrewAI / LlamaIndex | Multi-agent coordination |
-| **Interface** | Streamlit / Next.js | Interactive research dashboard |
+| **Interface** | Streamlit | Interactive research dashboard |
 | **Containerization** | Docker + Azure DevOps CI/CD | Deployment-ready setup |
 
 ---
